@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Componentes</string>
+    <string name="Banner_Encontros">Banner Encontros</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="selecione_a_op_o_abaixo">Selecione a opção abaixo:</string>
+    <string name="button_imagens">Imagens</string>
+    <string name="participantes_inscritos">Participantes Inscritos</string>
+    <string name="button_cancelar">Cancelar</string>
+    <string name="button_editar">Editar</string>
+    <string name="play_icon">play</string>
+    <string name="images_icon">Fotos</string>
+    <string name="button_stop">stop</string>
+
+    <string-array name="Cursos">
+        <item>Ciência da Computação</item>
+        <item>Engenharia Civil</item>
+        <item>Engenharia Mecânica</item>
+        <item>Engenharia de Software</item>
+        <item>Engenharia de Produção</item>
+    </string-array>
+
+</resources>
