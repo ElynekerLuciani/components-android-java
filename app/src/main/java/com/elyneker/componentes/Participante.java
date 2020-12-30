@@ -5,10 +5,12 @@ public class Participante {
     private static int contadorId = 0;
     private int id;
     private String nome;
+    private String categoria;
 
-    public Participante(String nome) {
+    public Participante(String nome, String categoria) {
         this.id = contadorId++;
         this.nome = nome;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -22,6 +24,10 @@ public class Participante {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getCategoria() { return categoria; }
+
+    public void setCategoria(String categoria) { this.categoria = categoria; }
 
     @Override
     public String toString() {

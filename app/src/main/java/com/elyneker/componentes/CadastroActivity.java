@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class CadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -19,6 +22,8 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     public static int RESULT_CANCELAR = 2;
 
     EditText edtNome;
+    RadioGroup radioGroup;
+    ToggleButton toggleButton;
 
     boolean edit;
     int idParticipante;
@@ -35,19 +40,21 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
         spinner.setAdapter(adapter);
 
         edtNome = findViewById(R.id.editextNome);
+        radioGroup = findViewById(R.id.rdGrupo);
+        toggleButton = findViewById(R.id.toggleButtonConfirmar);
 
         edit = false;
 
         //pegando o valor vindo da tela principal
         if (getIntent().getExtras() != null) {
-           String nome = (String) getIntent().getExtras().get("nome");
-           idParticipante =(int) getIntent().getExtras().get("id");
-           //COLOCAR OS OUTROS DADOS AQUI
+            String nome = (String) getIntent().getExtras().get("nome");
+            idParticipante = (int) getIntent().getExtras().get("id");
+            //COLOCAR OS OUTROS DADOS AQUI
 
-           edtNome.setText(nome);
+            edtNome.setText(nome);
 
-           edit = true;
-       }
+            edit = true;
+        }
 
     }
 
@@ -69,13 +76,28 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     public void adicionar(View view) {
         Intent intent = new Intent();
 
+        //selecionando o tipo de participante
+        int itemRadioGrouSelecionado = radioGroup.getCheckedRadioButtonId();
+        RadioButton radioButtonSelecionado = findViewById(itemRadioGrouSelecionado);
+        String tipoParticipante = radioButtonSelecionado.getText().toString();
+
         String nome = edtNome.getText().toString();
+        String categoria = tipoParticipante;
 
         intent.putExtra("nome", nome);
+        intent.putExtra("categoria", categoria);
 
-        if(edit) intent.putExtra("id", idParticipante);
 
-        setResult(RESULT_ADD, intent);
-        finish();
+        if (edit) intent.putExtra("id", idParticipante);
+
+        //aceitar as regras de participação
+        if(toggleButton.isChecked()) {
+            setResult(RESULT_ADD, intent);
+            finish();
+        } else {
+            Toast.makeText(this, tipoParticipante + ", aceite as regras de participação!", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }

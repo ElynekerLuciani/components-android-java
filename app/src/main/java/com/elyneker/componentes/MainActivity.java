@@ -67,15 +67,18 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_ADD && resultCode == RESULT_ADD ) {
-            String nome = (String) data.getExtras().get("nome");
             //COLOCAR AQUI AS OUTRAS INFORMAÇÕES CADASTRADAS
+            String nome = (String) data.getExtras().get("nome");
+            String categoria = (String) data.getExtras().get("categoria");
 
-            Participante participante = new Participante(nome);
+
+            Participante participante = new Participante(nome, categoria);
 
             listaParticipantes.add(participante);
             adapter.notifyDataSetChanged();
         } else if(requestCode == REQUEST_EDITAR && resultCode == RESULT_ADD) {
             String nome = (String) data.getExtras().get("nome");
+            String categoria = (String) data.getExtras().get("categoria");
             //COLOCAR OS OSTROS DADOS AQUI
 
             int idEditar = (int) data.getExtras().get("id");
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             for (Participante participante:listaParticipantes) {
                 if (participante.getId() == idEditar) {
                     participante.setNome(nome);
+                    participante.setCategoria(categoria);
                 }
             }
 
