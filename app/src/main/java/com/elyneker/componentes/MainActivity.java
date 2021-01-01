@@ -60,6 +60,16 @@ public class MainActivity extends AppCompatActivity {
                 selected = position;
             }
         });
+
+        listViewContatos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,"Categoria: "+ listaParticipantes.get(position).getCategoria(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+
     }
 
     @Override

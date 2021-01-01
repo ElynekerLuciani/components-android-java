@@ -24,6 +24,8 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     EditText edtNome;
     RadioGroup radioGroup;
     ToggleButton toggleButton;
+    RadioButton categ;
+    Spinner spinner;
 
     boolean edit;
     int idParticipante;
@@ -33,7 +35,7 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        Spinner spinner = findViewById(R.id.spinnerCursos);
+        spinner = findViewById(R.id.spinnerCursos);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.Cursos, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -48,10 +50,15 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
         //pegando o valor vindo da tela principal
         if (getIntent().getExtras() != null) {
             String nome = (String) getIntent().getExtras().get("nome");
+            String categoria = (String) getIntent().getExtras().get("categoria");
+            String curso = (String) getIntent().getExtras().get("curso");
             idParticipante = (int) getIntent().getExtras().get("id");
+
+
             //COLOCAR OS OUTROS DADOS AQUI
 
             edtNome.setText(nome);
+
 
             edit = true;
         }
@@ -83,15 +90,19 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
 
         String nome = edtNome.getText().toString();
         String categoria = tipoParticipante;
+        String curso = spinner.getSelectedItem().toString();
+
 
         intent.putExtra("nome", nome);
         intent.putExtra("categoria", categoria);
+        //intent.putExtra("curso", curso);
 
 
         if (edit) intent.putExtra("id", idParticipante);
 
         //aceitar as regras de participação
         if(toggleButton.isChecked()) {
+            Toast.makeText(this, curso, Toast.LENGTH_SHORT).show();
             setResult(RESULT_ADD, intent);
             finish();
         } else {
