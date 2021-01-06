@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +21,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
 
     public static int RESULT_ADD = 1;
     public static int RESULT_CANCELAR = 2;
+    private static final String[] CAMPUS = new String[] {
+            "Sobral", "Quixadá", "Russas", "Tauá"
+    };
 
     EditText edtNome;
     RadioGroup radioGroup;
@@ -34,6 +38,10 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        AutoCompleteTextView editarText = findViewById(R.id.autoCompleteTextView);
+        ArrayAdapter<String> adapterText = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CAMPUS);
+        editarText.setAdapter(adapterText);
 
         spinner = findViewById(R.id.spinnerCursos);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -54,12 +62,9 @@ public class CadastroActivity extends AppCompatActivity implements AdapterView.O
             String curso = (String) getIntent().getExtras().get("curso");
             idParticipante = (int) getIntent().getExtras().get("id");
 
-
             //COLOCAR OS OUTROS DADOS AQUI
 
             edtNome.setText(nome);
-
-
             edit = true;
         }
 
