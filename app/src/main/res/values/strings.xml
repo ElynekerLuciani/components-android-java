@@ -18,5 +18,8 @@
         <item>Engenharia de Software</item>
         <item>Engenharia de Produção</item>
     </string-array>
+    <string name="title_activity__tab">Activity_Tab</string>
+    <string name="tab_text_1">Primeiro</string>
+    <string name="tab_text_2">Segundo</string>
 
 </resources>

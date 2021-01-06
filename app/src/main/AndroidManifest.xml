@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Componentes">
-        <activity android:name=".PlayActivity"></activity>
+        <activity
+            android:name=".Activity_Tab"
+            android:label="@string/title_activity__tab"
+            android:theme="@style/Theme.Componentes.NoActionBar"></activity>
+        <activity android:name=".PlayActivity" />
         <activity android:name=".CliqueActivity" />
         <activity android:name=".ImagensActivity" />
         <activity android:name=".CadastroActivity" />

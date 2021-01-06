@@ -62,6 +62,14 @@
                 android:onClick="clicarImagens"
                 app:srcCompat="@drawable/ic_baseline_image" />
 
+            <ImageView
+                android:id="@+id/idImageViewTabs"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="clicarMultTabs"
+                app:srcCompat="@drawable/ic_baseline_dynamic_feed_24" />
+
         </LinearLayout>
 
         <LinearLayout

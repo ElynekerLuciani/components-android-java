@@ -148,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clicarMultTabs(View view) {
+        Intent intent = new Intent(this, Activity_Tab.class);
+        startActivity(intent);
+    }
+
+
     public void clicarEditar() {
         Intent intent = new Intent(this, CadastroActivity.class);
         //passando para a outra tela o participante selecionado
